@@ -11,14 +11,19 @@ class ReconstructItinerary:
             graph[a].append(b)
 
         print("graph 1 : ", graph)
+
+        graph2 = collections.defaultdict(list)
+        for a, b in ticket:
+            graph2[a].append(b)
+        print("graph 2 : ", graph2)
         route = []
 
-        def dfs(start: str):
-            while graph[start]:
-                dfs(graph[start].pop(0))
-            route.append(start)
-
-        dfs("JFK")
+        # def dfs(start: str):
+        #     while graph[start]:
+        #         dfs(graph[start].pop(0))
+        #     route.append(start)
+        #
+        # dfs("JFK")
         return route[::-1]
 
     def solutionUsingStack(self, ticket: List[List[str]]) -> List[str]:
