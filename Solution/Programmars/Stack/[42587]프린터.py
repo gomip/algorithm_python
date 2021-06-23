@@ -8,6 +8,18 @@ import collections
 class Printer:
     def solution(self, priorities: List[int], location: int):
         answer = 0
+        queue = collections.deque(priorities)
+        temp = queue.popleft()
+
+        print("temp", temp, "priorities", queue)
+
+        for item in queue:
+            if item > temp:
+                queue.append(temp)
+            else:
+                print("small", item)
+            t = queue.popleft()
+            # temp = t
         return answer
 
 
