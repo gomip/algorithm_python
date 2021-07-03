@@ -11,14 +11,18 @@ class Crane:
 
     def solution(self, board: List[List[int]], moves: List[int]) -> int:
         answer = 0
-        board.reverse()
-        basket = []
-        col = len(board[0])
+        stack = [0]
 
         for item in moves:
-            for row in range(col):
-                temp = self.checkValue(board[row][item-1])
-
+            for b in board:
+                if b[item-1] != 0:
+                    if stack[-1] == b[item-1]:
+                        stack.pop()
+                        answer += 2
+                    else:
+                        stack.append(b[item-1])
+                    b[item-1] = 0
+                    break
 
         return answer
 
